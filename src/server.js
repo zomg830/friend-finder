@@ -40,7 +40,7 @@ app.post("/api/friends", (req, res) => {
   // );
 
   var username = req.body.name;
-  var userAnswers = req.body.answers;
+  var userAnswers = req.body.scores;
 
   var matchName = "";
   var matchPhoto = "";

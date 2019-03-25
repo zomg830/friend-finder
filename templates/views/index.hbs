@@ -36,7 +36,12 @@
         <div>
             <button id="answerButton">Answer
             </button>
-            <input id="nameInput" placeholder="Your name" style="display:none" />
+            <div class="input-field" id="nameInput" style="display:none">
+                <input placeholder="Your name" />
+                <h5>Link to Photo Image (Required)</h5>
+                <input type="text" class="validate" placeholder="Photo Link Here" id="userPhoto">
+            </div>
+            <br>
             <button id="submitButton" style="display:none">Find a friend!
             </button>
         </div>
@@ -109,7 +114,7 @@
             var userName = $("#nameInput").val();
             var userData = {
                 name: userName,
-                answers: answers
+                scores: answers
             };
             console.log(userData);
 

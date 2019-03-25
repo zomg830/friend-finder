@@ -22,7 +22,7 @@
 
         <div class="input-field">
             <h3 id="question-num">Question 1</h3>
-            <h5 id="question-content">I like noodles</h5>
+            <h5 id="question-content">Michael Bay is an incredibly underrated director.</h5>
             <select id="question">
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">1 (Strongly Disagree)</option>
@@ -36,8 +36,8 @@
         <div>
             <button id="answerButton">Answer
             </button>
-            <div class="input-field" id="nameInput" style="display:none">
-                <input placeholder="Your name" />
+            <div class="input-field" style="display:none" id="inputDiv">
+                <input id="nameInput" placeholder="Your name" />
                 <h5>Link to Photo Image (Required)</h5>
                 <input type="text" class="validate" placeholder="Photo Link Here" id="userPhoto">
             </div>
@@ -78,20 +78,45 @@
             {
                 id: 0,
                 num: "Question 1",
-                content: "I like noodles"
+                content: "Michael Bay is an incredibly underrated director."
             },
             {
                 id: 1,
                 num: "Question 2",
-                content: "I like peas"
+                content: "Engineers are more important than artists."
             },
             {
                 id: 2,
                 num: "Question 3",
-                content: "I like tomatoes"
+                content: "I would be A-OK staying where I currently live for the rest of my life."
             },
             {
                 id: 3,
+                num: "Question 4",
+                content: "Beer is the superior beverage to wine."
+            },
+            {
+                id: 4,
+                num: "Question 5",
+                content: "I would rather play a good video game than watch a good TV show."
+            },
+            {
+                id: 5,
+                num: "Question 6",
+                content: "The world would be a better place without governments."
+            },
+            {
+                id: 6,
+                num: "Question 7",
+                content: "Dabbing and unironically using the word 'yeet' should be criminal offences."
+            },
+            {
+                id: 7,
+                num: "Question 8",
+                content: "The Office is a better show than Friends."
+            },
+            {
+                id: 8,
                 num: "Let's find some friends!",
                 content: "Click the button to submit!"
             }
@@ -102,7 +127,7 @@
                 $("#answerButton").hide();
                 $("#question").hide();
                 $("#submitButton").show();
-                $("#nameInput").show();
+                $("#inputDiv").show();
             }
             answers.push(parseInt($("#question").val()));
             counter++;

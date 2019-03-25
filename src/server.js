@@ -95,6 +95,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
   console.log(`Server is up on Port ${PORT}`);
 });

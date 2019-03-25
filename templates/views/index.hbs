@@ -42,8 +42,85 @@
         </div>
     </div>
 
+    <div id="FriendModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Your New Best Friend</h1>
+                </div>
+                <div class="modal-body">
+                    <h2 id="bestFriend"></h2>
+                    <img id="bestImage" src="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="close-modal" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{>footer}}
-    <script src="./js/app.js"></script>
+    {{!-- <script src="./js/app.js"></script> --}}
+    <script>
+        console.log("Client side javascript file is loaded");
+
+        $("#close-modal").on("click", () => $("#FriendModal").hide());
+
+        var answers = [];
+        var counter = 0;
+
+        var questions = [
+            {
+                id: 0,
+                num: "Question 1",
+                content: "I like noodles"
+            },
+            {
+                id: 1,
+                num: "Question 2",
+                content: "I like peas"
+            },
+            {
+                id: 2,
+                num: "Question 3",
+                content: "I like tomatoes"
+            },
+            {
+                id: 3,
+                num: "Let's find some friends!",
+                content: "Click the button to submit!"
+            }
+        ];
+
+        $("#answerButton").on("click", e => {
+            if (counter === questions.length - 2) {
+                $("#answerButton").hide();
+                $("#question").hide();
+                $("#submitButton").show();
+                $("#nameInput").show();
+            }
+            answers.push(parseInt($("#question").val()));
+            counter++;
+            $("#question-num").html(questions[counter].num);
+            $("#question-content").html(questions[counter].content);
+        });
+
+        $("#submitButton").on("click", e => {
+            var userName = $("#nameInput").val();
+            var userData = {
+                name: userName,
+                answers: answers
+            };
+            console.log(userData);
+
+            $.post("/api/friends", userData, function (data) {
+                console.log(data);
+                $("#bestFriend").text(data.matchName);
+                $("#bestImage").attr("src", data.matchPhoto);
+                $("#FriendModal").show();
+            });
+        });
+    </script>
 </body>
 
 </html>

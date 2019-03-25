@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+const friends = require("../public/js/friends");
 
 const PORT = 8080;
 
@@ -47,15 +48,38 @@ app.get("", (req, res) => {
 app.post("/api/friends", (req, res) => {
   console.log(req.body.name);
   // console.log(res);
-  connection.query(
-    "INSERT INTO friends (username, q1, q2, q3) VALUES (?, ?, ?, ?)",
-    [req.body.name, req.body.q1, req.body.q2, req.body.q3],
-    function(err, result) {
-      if (err) {
-        console.log(err);
-      }
+  // connection.query(
+  //   "INSERT INTO friends (username, q1, q2, q3) VALUES (?, ?, ?, ?)",
+  //   [req.body.name, req.body.q1, req.body.q2, req.body.q3],
+  //   function(err, result) {
+  //     if (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  // );
+
+  var username = req.body.name;
+  var userAnswers = req.body.answers;
+
+  var matchName = "";
+  var matchPhoto = "";
+
+  var totalDifference = Number.POSITIVE_INFINITY;
+
+  friends.forEach(el => {
+    var localDifference = 0;
+    for (var i = 0; i < userAnswers.length; i++) {
+      localDifference += Math.abs(el.scores[i] - userAnswers[i]);
     }
-  );
+    if (localDifference < totalDifference) {
+      totalDifference = localDifference;
+      matchName = el.name;
+      matchPhoto = el.photo;
+      var friendIndex = i;
+      console.log(matchName);
+    }
+  });
+  res.json({ status: "OK", matchName: matchName, matchPhoto: matchPhoto });
 });
 
 app.get("/api/friends", (req, res) => {

@@ -1,55 +1,93 @@
 body {
-    color: #333333;
-    font-family: Arial, Helvetica, sans-serif;
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 0 16px;
+  color: #333333;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 16px;
 
-    display:flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.main-content{
-    flex-grow:1;
+.main-content {
+  flex-grow: 1;
 }
 
 footer {
-    color: #888888;
-    border-top: 1px solid #eeeeee;
-    margin-top: 16px;
-    padding: 16px 0;
+  color: #888888;
+  border-top: 1px solid #eeeeee;
+  margin-top: 16px;
+  padding: 16px 0;
 }
 
 header {
-    margin-top: 16px;
-    margin-bottom: 48px;
+  margin-top: 16px;
+  margin-bottom: 48px;
 }
 
 h1 {
-    font-size: 64px;
-    margin-bottom: 16px;
+  font-size: 64px;
+  margin-bottom: 16px;
 }
 
-header a{
-    color: #888888;
-    margin-right: 16px;
-    text-decoration: none;
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
 }
 
-.portrait { 
-    width: 250px;
+.portrait {
+  width: 250px;
 }
 
-input { 
-    border: 1px solid #cccccc;
-    padding: 8px;
+input {
+  border: 1px solid #cccccc;
+  padding: 8px;
 }
 
-button { 
-    cursor: pointer;
-    border: 1px solid #888888;
-    background: #888888;
-    color: white;
-    padding: 8px;
+button {
+  cursor: pointer;
+  border: 1px solid #888888;
+  background: #888888;
+  color: white;
+  padding: 8px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
